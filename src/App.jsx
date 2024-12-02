@@ -29,6 +29,22 @@ useEffect(() => {
   passwordGenerator();
 }, [numberAllowed, charcterAllowed, length,passwordGenerator]);
 
+const copyToClipboard= () =>{
+  window.navigator.clipboard.writeText(password)
+  .then(()=>{
+    alert("Password Copied Copied")
+  })
+  .catch((error) =>{
+    alert("Password not Copied",error)
+
+  })
+  // geolocation isa also a asynchronus function that means they always return promise
+  // navigator.geolocation.getCurrentPosition(
+  //   (position) => console.log(position),
+  //   (error) => console.error(error)
+  // );
+}
+
  
 
 
@@ -45,7 +61,7 @@ useEffect(() => {
               readOnly
             />
 
-            <button className='text-2xl rounded-lg p-2 border-solid border-2 border-blue-700 bg-blue-600 hover:bg-blue-500 transition-all 0.3s ease-in'>COPY</button>
+            <button onClick={copyToClipboard} className='text-2xl rounded-lg p-2 border-solid border-2 border-blue-700 bg-blue-600 hover:bg-blue-500 transition-all 0.3s ease-in'>COPY</button>
           </div>
           <div className='flex justify-center items-center gap-3 text-xl'>
             <input type="range"
